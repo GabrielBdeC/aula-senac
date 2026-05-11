@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -160,10 +161,10 @@
 		}
 	</style>
 </head>
+
 <body>
 	<main>
 		<h1>Lista de Tarefas</h1>
-		<p class="subtitulo">CRUD com Spring Boot, Thymeleaf, JPA e MySQL</p>
 
 		<form class="formulario" th:action="@{/tarefas}" method="post">
 			<input type="text" name="titulo" placeholder="Digite uma nova tarefa" required autofocus>
@@ -191,7 +192,8 @@
 							<span class="status finalizada" th:if="${tarefa.concluida}">Concluida</span>
 							<span class="status pendente" th:unless="${tarefa.concluida}">Pendente</span>
 						</td>
-						<td th:text="${tarefa.dataConclusao != null ? #temporals.format(tarefa.dataConclusao, 'dd/MM/yyyy') : '-'}">-</td>
+						<td th:text="${tarefa.dataConclusao != null ? #temporals.format(tarefa.dataConclusao, 'dd/MM/yyyy') : '-'}">
+							-</td>
 						<td>
 							<div class="acoes">
 								<form th:if="${!tarefa.concluida}" th:action="@{/tarefas/{id}/concluir(id=${tarefa.id})}" method="post">
@@ -211,4 +213,5 @@
 		</section>
 	</main>
 </body>
+
 </html>
